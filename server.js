@@ -30,6 +30,8 @@ app.post('/addUser',function(req,res){
 app.delete('/deleteUser',function(req,res){
     fs.readFile(__dirname + "/" + "users.json", "utf-8", function(err,data){
         data = JSON.parse(data);
+        delete data["user" + 2];
+        res.end(JSON.stringify(data));
     });
 });
 
