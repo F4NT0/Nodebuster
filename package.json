@@ -1,0 +1,22 @@
+{
+  "name": "nodebuster",
+  "version": "1.0.0",
+  "description": "Node Blockbuster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F4NT0/Nodebuster.git"
+  },
+  "author": "Gabriel Fanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/F4NT0/Nodebuster/issues"
+  },
+  "homepage": "https://github.com/F4NT0/Nodebuster#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
