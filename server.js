@@ -25,7 +25,13 @@ app.post('/addUser',function(req,res){
         data["user5"] = newUser["user5"];
         res.end(JSON.stringify(data));
     });
-})
+});
+
+app.delete('/deleteUser',function(req,res){
+    fs.readFile(__dirname + "/" + "users.json", "utf-8", function(err,data){
+        data = JSON.parse(data);
+    });
+});
 
 var server = app.listen(8184,function(){
     var host = "localhost";
