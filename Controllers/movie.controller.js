@@ -1,4 +1,4 @@
-const Movie = require("../Model/movie.model");
+const Movie = require("../Models/movie.model");
 
 //Create
 exports.create = (req,res) => {
@@ -29,12 +29,12 @@ exports.findAll = (req,res) => {
 
 //Find One
 exports.findOne = (req,res) => {
-    Movie.findByName(req.params.title, (err,data) => {
+    Movie.findById(req.params.id, (err,data) => {
         if(err){
             if(err.kind === 'not_found'){
-                res.status(404).send({message: `No movie with title ${req.params.title}`});
+                res.status(404).send({message: `No movie with title ${req.params.id}`});
             }else{
-                res.status(505).send({message: `Error getting movie with title ${req.params.title}`});
+                res.status(505).send({message: `Error getting movie with title ${req.params.id}`});
             }
         } else res.send(data);
     });
@@ -44,12 +44,12 @@ exports.findOne = (req,res) => {
 exports.update = (req,res) => {
     if(!req.body){res.status(400).send({message: "Content are Empty!"});};
 
-    Movie.updateByName(req.params.title,new Movie(req.body),(err,data) => {
+    Movie.updateById(req.params.id_movie,new Movie(req.body),(err,data) => {
         if(err){
             if(err.kind === 'not_found'){
-                res.status(404).send({message: `No movie with title ${req.params.title}`});
+                res.status(404).send({message: `No movie with title ${req.params.id_movie}`});
             }else{
-                res.status(505).send({message: `Error updating movie with title ${req.params.title}`});
+                res.status(505).send({message: `Error updating movie with ID ${req.params.id_movie}`});
             }
         } else res.send(data);
     })
@@ -57,12 +57,12 @@ exports.update = (req,res) => {
 
 //Delete
 exports.delete = (req,res) => {
-    Movie.remove(req.params.id_movie,(err,data) => {
+    Movie.remove(req.params.id,(err,data) => {
         if(err){
             if(err.kind === 'not_found'){
-                res.status(404).send({message: `No movie with id ${req.params.id_movie}`});
+                res.status(404).send({message: `No movie with id ${req.params.id}`});
             }else{
-                res.status(505).send({message: `Error deleting movie with id ${req.params.id_movie} `});
+                res.status(505).send({message: `Error deleting movie with id ${req.params.id} `});
             }
         } else res.send({message: `Movie was deleted Sucessfully!`});
     })

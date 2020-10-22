@@ -1,4 +1,4 @@
-const sql = require('../Model/db_model_connection');
+const sql = require('./db_model_connection');
 const Movie = function(movie){
     this.id_movie = movie.id_movie;
     this.title = movie.title;
@@ -16,13 +16,13 @@ Movie.create = (newMovie,result) => {
     });
 };
 
-//Find by Name
-Movie.findByName = (title,result) =>{
-    sql.query(`select * from movies where title = ${title}`,(err,res) => {
+//Find by id
+Movie.findById = (id,result) =>{
+    sql.query(`select * from movies where id_movie = ${id}`,(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         if(res.length){
             console.log("Found movie: ", res[0]);
-            result(null,res);
+            result(null,res[0]);
             return;
         }
         result({kind: 'not_found'}, null);
@@ -38,19 +38,19 @@ Movie.getAll = result => {
     });
 };
 
-//Update
-Movie.updateByName = (title,movie,result) => {
-    sql.query('update movies set id_movie = ?, title = ?, director = ?, copies = ?',[movie.id_movie,movie.title,movie.director,movie.copies],(err,res) => {
+//Update by ID
+Movie.updateById = (id_movie,movie,result) => {
+    sql.query('update movies set title = ?, director = ?, copies = ?',[movie.title,movie.director,movie.copies],(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         if(res.affectedRows == 0){result({kind: 'not_found'},null);return;}
-        console.log("Movie Updated: ",{title: title, ...movie});
-        result(null,{title: title, ...movie});
+        console.log("Movie Updated: ",{id: id_movie, ...movie});
+        result(null,{id: id_movie, ...movie});
     });
 };
 
 //Delete
 Movie.remove = (id,result) => {
-    sql.query("delete from movies where id = ?", id ,(err,res) => {
+    sql.query("delete from movies where id_movie = ?", id ,(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         if(res.affectedRows == 0){result({kind: 'not_found'},null);return;}
         console.log("Movie Deleted with id: ",id);
