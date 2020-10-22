@@ -14,7 +14,7 @@ connection.connect(function(err){
     console.log(color.green("MySQL Connected!"));
 
     //Create database from file
-    fs.readFile(__dirname + "/" + "SQL/" + "db_build.sql",'utf-8',function(err,data){
+    fs.readFile(__dirname + "/" + "db_build.sql",'utf-8',function(err,data){
         if(err) throw err;
         var lines = data.split("\n");
         for(var i = 0 ; i < lines.length ; i++){
@@ -25,7 +25,7 @@ connection.connect(function(err){
         }
     });
     console.log(color.blue("Database created!"));
-
-
 });
+
+connection.end();
 
