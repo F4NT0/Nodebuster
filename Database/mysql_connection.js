@@ -27,5 +27,3 @@ connection.connect(function(err){
     console.log(color.blue("Database created!"));
 });
 
-connection.end();
-
