@@ -32,9 +32,9 @@ exports.findOne = (req,res) => {
     Movie.findById(req.params.id, (err,data) => {
         if(err){
             if(err.kind === 'not_found'){
-                res.status(404).send({message: `No movie with title ${req.params.id}`});
+                res.status(404).send({message: `No movie with id ${req.params.id}`});
             }else{
-                res.status(505).send({message: `Error getting movie with title ${req.params.id}`});
+                res.status(505).send({message: `Error getting movie with id ${req.params.id}`});
             }
         } else res.send(data);
     });
