@@ -14,7 +14,7 @@ exports.create = (req,res) => {
     });
 
     //save on db
-    Rent.create(client,(err,data) => {
+    Rent.create(rent,(err,data) => {
         if(err){res.status(500).send({message: err.message || "Error on rent creation!"});};
         res.send(data);
     });

@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 //Route movie import
 require("./Routes/movie.routes")(app);
 require("./Routes/client.routes")(app);
+require("./Routes/rent.routes")(app);
 app.listen(3000, () => {
   console.log("Server is running on port 3000.");
 });
