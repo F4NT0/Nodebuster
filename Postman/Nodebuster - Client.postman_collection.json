@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "1b39cc57-da9b-4ad8-9733-2e3f89dfb790",
+		"name": "Nodebuster - Client",
+		"description": "Service Request tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Main Page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					]
+				},
+				"description": "main page test"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Clients Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_client\": 2,\n    \"client_name\": \"Pedro Silva\",\n    \"client_pass\": \"12344\",\n    \"email\": \"Pedro@Pepe.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients"
+					]
+				},
+				"description": "POST Test for Clients"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL Clients Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/clients/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						""
+					]
+				},
+				"description": "GET ALL Clients Test"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE Client Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/clients/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"2"
+					]
+				},
+				"description": "test getting one client from Database"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Client Test",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_name\": \"Rodrigo Tavares\",\n    \"client_pass\": \"432111\",\n    \"email\": \"Rodrigo@Pepe.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/clients/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"clients",
+						"2"
+					]
+				},
+				"description": "test client update from id"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Client Test",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/movies/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies",
+						"2"
+					]
+				},
+				"description": "deleting a client"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
