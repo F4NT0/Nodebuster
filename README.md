@@ -123,3 +123,7 @@ DELETE|http://localhost:3000/movies/id|DELETE Movie Test|
 ---
 
 **All the Collections for Postman are in that order and with this tests.**
+
+#### Visual Apresentation
+
+<img src="Images/how-to-use-postman.gif">
