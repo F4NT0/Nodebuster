@@ -1,5 +1,4 @@
-const sql = require('../Database/mysql_connection');
-
+const sql = require('../Model/db_model_connection');
 const Movie = function(movie){
     this.id_movie = movie.id_movie;
     this.title = movie.title;
@@ -8,7 +7,7 @@ const Movie = function(movie){
 }
 
 //Create
-Movie.create = (newMovie,res) => {
+Movie.create = (newMovie,result) => {
     sql.query("insert into movies set ?",newMovie,(err,res) => {
         if(err){console.log(err);result(err,null);return;}
 
@@ -18,7 +17,7 @@ Movie.create = (newMovie,res) => {
 };
 
 //Find by Name
-Movie.findByName = (title,res) =>{
+Movie.findByName = (title,result) =>{
     sql.query(`select * from movies where title = ${title}`,(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         if(res.length){
@@ -31,8 +30,8 @@ Movie.findByName = (title,res) =>{
 };
 
 //Get all Movies
-Movie.getAll = res => {
-    sql.query('select * from customers',(err,res) => {
+Movie.getAll = result => {
+    sql.query('select * from movies',(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         console.log("Movies: ", res);
         result(null, res);
@@ -40,8 +39,8 @@ Movie.getAll = res => {
 };
 
 //Update
-Movie.updateByName = (title,movie,res) => {
-    sql.query('update customers set id_movie = ?, title = ?, director = ?, copies = ?',[movie.id_movie,movie.title,movie.director,movie.copies],(err,res) => {
+Movie.updateByName = (title,movie,result) => {
+    sql.query('update movies set id_movie = ?, title = ?, director = ?, copies = ?',[movie.id_movie,movie.title,movie.director,movie.copies],(err,res) => {
         if(err){console.log(err);result(err,null);return;}
         if(res.affectedRows == 0){result({kind: 'not_found'},null);return;}
         console.log("Movie Updated: ",{title: title, ...movie});
