@@ -1,5 +1,5 @@
 module.exports = app => {
-    const movies = require("../controllers/movie.controller");
+    const movies = require("../Controllers/movie.controller");
 
     //New Movie
     app.post("/movies", movies.create);
