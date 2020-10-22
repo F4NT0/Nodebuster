@@ -1,7 +1,9 @@
 const movie = require("../Model/movie.model");
 
 //Create
-exports.create = (req,res) => {};
+exports.create = (req,res) => {
+    
+};
 
 //Find All
 exports.findAll = (req,res) => {};
