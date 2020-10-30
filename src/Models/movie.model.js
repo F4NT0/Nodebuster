@@ -9,8 +9,11 @@ const Movie = function(movie){
 //Create
 Movie.create = (newMovie,result) => {
     sql.query("insert into movies set ?",newMovie,(err,res) => {
-        if(err){console.log(err);result(err,null);return;}
-
+        if(err){
+            console.log(err);
+            result(err,null);
+            return;
+        }
         console.log("Created movie ", {title: res.title, ...newMovie});
         result(null,{id_movie: res.insertId, ...newMovie});
     });
@@ -19,7 +22,11 @@ Movie.create = (newMovie,result) => {
 //Find by id
 Movie.findById = (id,result) =>{
     sql.query(`select * from movies where id_movie = ${id}`,(err,res) => {
-        if(err){console.log(err);result(err,null);return;}
+        if(err){
+            console.log(err);
+            result(err,null);
+            return;
+        }
         if(res.length){
             console.log("Found movie: ", res[0]);
             result(null,res[0]);
@@ -32,7 +39,11 @@ Movie.findById = (id,result) =>{
 //Get all Movies
 Movie.getAll = result => {
     sql.query('select * from movies',(err,res) => {
-        if(err){console.log(err);result(err,null);return;}
+        if(err){
+            console.log(err);
+            result(err,null);
+            return;
+        }
         console.log("Movies: ", res);
         result(null, res);
     });
@@ -41,8 +52,15 @@ Movie.getAll = result => {
 //Update by ID
 Movie.updateById = (id_movie,movie,result) => {
     sql.query('update movies set title = ?, director = ?, copies = ?',[movie.title,movie.director,movie.copies],(err,res) => {
-        if(err){console.log(err);result(err,null);return;}
-        if(res.affectedRows == 0){result({kind: 'not_found'},null);return;}
+        if(err){
+            console.log(err);
+            result(err,null);
+            return;
+        }
+        if(res.affectedRows == 0){
+            result({kind: 'not_found'},null);
+            return;
+        }
         console.log("Movie Updated: ",{id: id_movie, ...movie});
         result(null,{id: id_movie, ...movie});
     });
@@ -51,8 +69,15 @@ Movie.updateById = (id_movie,movie,result) => {
 //Delete
 Movie.remove = (id,result) => {
     sql.query("delete from movies where id_movie = ?", id ,(err,res) => {
-        if(err){console.log(err);result(err,null);return;}
-        if(res.affectedRows == 0){result({kind: 'not_found'},null);return;}
+        if(err){
+            console.log(err);
+            result(err,null);
+            return;
+        }
+        if(res.affectedRows == 0){
+            result({kind: 'not_found'},null);
+            return;
+        }
         console.log("Movie Deleted with id: ",id);
         result(null,res);
     });
